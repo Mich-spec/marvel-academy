@@ -83,6 +83,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
   <meta property="og:description" content="Be first in line. Get early-bird pricing and exclusive bonuses when we launch." />
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="stylesheet" href="/assets/css/pre-register.css" />
+  <link rel="stylesheet" href="<?php echo '/assets/css/main.css'; ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
 </head>
 <body>
