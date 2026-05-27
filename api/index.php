@@ -80,8 +80,8 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
   <meta name="description" content="Marvel Academy is launching soon. Pre-register now to get early-bird pricing, exclusive bonuses, and priority access to our certified IT courses." />
   <meta property="og:title" content="Marvel Academy is Coming — Pre-Register for Early Access" />
   <meta property="og:description" content="Be first in line. Get early-bird pricing and exclusive bonuses when we launch." />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/pre-register.css" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/pre-register.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
 </head>
 <body>
