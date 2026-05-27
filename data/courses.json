@@ -1,0 +1,276 @@
+[
+  {
+    "id": 1,
+    "slug": "ui-ux-design",
+    "title": "UI/UX Design",
+    "icon": "🎨",
+    "badge_color": "#1a5c45",
+    "card_color": "#f0faf5",
+    "original_price": 125000,
+    "price": 23000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "12 Weeks",
+    "level": "Beginner to Intermediate",
+    "students": 1200,
+    "rating": 4.8,
+    "reviews": 342,
+    "description": "Master the art and science of User Interface and User Experience design. Learn industry-standard tools like Figma, Adobe XD, and Sketch while building a stunning portfolio of real-world projects.",
+    "what_you_learn": [
+      "Design thinking & user research methodologies",
+      "Wireframing, prototyping, and usability testing",
+      "Figma & Adobe XD mastery",
+      "Color theory, typography, and visual hierarchy",
+      "Responsive & mobile-first design",
+      "Portfolio development & client presentation skills"
+    ],
+    "requirements": [
+      "No prior design experience required",
+      "A computer with internet access",
+      "Willingness to learn and practice daily"
+    ],
+    "instructor": {
+      "name": "Adaeze Nwosu",
+      "title": "Senior UX Designer at Google",
+      "avatar": "AN",
+      "bio": "10+ years of experience in product design. Previously worked at Meta and Uber. Passionate about teaching the next generation of designers."
+    },
+    "curriculum": [
+      { "week": "Week 1–2", "topic": "Introduction to UX & Design Thinking" },
+      { "week": "Week 3–4", "topic": "User Research & Personas" },
+      { "week": "Week 5–6", "topic": "Wireframing & Information Architecture" },
+      { "week": "Week 7–8", "topic": "Visual Design & UI Fundamentals" },
+      { "week": "Week 9–10", "topic": "Prototyping & Usability Testing" },
+      { "week": "Week 11–12", "topic": "Portfolio Project & Career Prep" }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "web-app-development",
+    "title": "Web App Development",
+    "icon": "💻",
+    "badge_color": "#1a5c45",
+    "card_color": "#e8f4fd",
+    "original_price": 120000,
+    "price": 30000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "16 Weeks",
+    "level": "Beginner to Advanced",
+    "students": 2100,
+    "rating": 4.9,
+    "reviews": 587,
+    "description": "Build modern, scalable web applications from scratch. This comprehensive program covers both frontend and backend development using the latest technologies and industry best practices.",
+    "what_you_learn": [
+      "HTML5, CSS3, and modern JavaScript (ES6+)",
+      "React.js for dynamic frontend development",
+      "Node.js and Express.js for backend APIs",
+      "Database design with PostgreSQL and MongoDB",
+      "RESTful APIs and authentication",
+      "Deployment with Docker and cloud platforms"
+    ],
+    "requirements": [
+      "Basic computer literacy",
+      "A laptop or desktop computer",
+      "Commitment to 15+ hours per week"
+    ],
+    "instructor": {
+      "name": "Chukwuemeka Obi",
+      "title": "Full-Stack Engineer at Andela",
+      "avatar": "CO",
+      "bio": "8 years building enterprise web applications. Open source contributor and tech community mentor."
+    },
+    "curriculum": [
+      { "week": "Week 1–3", "topic": "HTML, CSS & Responsive Design" },
+      { "week": "Week 4–6", "topic": "JavaScript Fundamentals & DOM" },
+      { "week": "Week 7–9", "topic": "React.js & Modern Frontend" },
+      { "week": "Week 10–12", "topic": "Node.js & Backend Development" },
+      { "week": "Week 13–14", "topic": "Databases & API Integration" },
+      { "week": "Week 15–16", "topic": "Deployment, Portfolio & Job Prep" }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "data-science",
+    "title": "Data Science",
+    "icon": "📊",
+    "badge_color": "#1a5c45",
+    "card_color": "#fff8e8",
+    "original_price": 145000,
+    "price": 30000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "14 Weeks",
+    "level": "Intermediate",
+    "students": 980,
+    "rating": 4.7,
+    "reviews": 203,
+    "description": "Become a data scientist equipped to solve real business problems. Learn to collect, analyze, and visualize data using Python, and build predictive machine learning models.",
+    "what_you_learn": [
+      "Python for data analysis (Pandas, NumPy)",
+      "Data visualization with Matplotlib and Seaborn",
+      "Statistical analysis and hypothesis testing",
+      "Machine learning algorithms with Scikit-learn",
+      "Deep learning basics with TensorFlow",
+      "End-to-end data science project workflow"
+    ],
+    "requirements": [
+      "Basic knowledge of mathematics",
+      "No prior programming experience required",
+      "Laptop with at least 8GB RAM recommended"
+    ],
+    "instructor": {
+      "name": "Dr. Funke Adeyemi",
+      "title": "Data Scientist at Flutterwave",
+      "avatar": "FA",
+      "bio": "PhD in Applied Statistics. 7 years in data science across fintech and healthcare sectors."
+    },
+    "curriculum": [
+      { "week": "Week 1–2", "topic": "Python Basics & Data Structures" },
+      { "week": "Week 3–4", "topic": "Data Wrangling with Pandas" },
+      { "week": "Week 5–6", "topic": "Exploratory Data Analysis & Visualization" },
+      { "week": "Week 7–8", "topic": "Statistics & Probability" },
+      { "week": "Week 9–11", "topic": "Machine Learning Foundations" },
+      { "week": "Week 12–14", "topic": "Advanced ML & Capstone Project" }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "data-analysis",
+    "title": "Data Analysis",
+    "icon": "📈",
+    "badge_color": "#1a5c45",
+    "card_color": "#f5e8ff",
+    "original_price": 120000,
+    "price": 25000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "10 Weeks",
+    "level": "Beginner",
+    "students": 1560,
+    "rating": 4.8,
+    "reviews": 421,
+    "description": "Turn raw data into actionable business insights. Learn Excel, SQL, and Power BI to analyze and present data in ways that drive smart business decisions.",
+    "what_you_learn": [
+      "Advanced Excel functions, pivot tables, and dashboards",
+      "SQL for querying and managing databases",
+      "Power BI for interactive data visualization",
+      "Google Sheets for collaborative data work",
+      "Business intelligence concepts and KPIs",
+      "Storytelling with data and presenting findings"
+    ],
+    "requirements": [
+      "No prior experience needed",
+      "Access to Microsoft Excel or Google Sheets",
+      "Basic computer skills"
+    ],
+    "instructor": {
+      "name": "Biodun Lawal",
+      "title": "Business Intelligence Analyst at GTBank",
+      "avatar": "BL",
+      "bio": "6 years transforming business data into strategic decisions. Certified Microsoft Power BI expert."
+    },
+    "curriculum": [
+      { "week": "Week 1–2", "topic": "Excel Fundamentals & Advanced Functions" },
+      { "week": "Week 3–4", "topic": "SQL for Data Analysis" },
+      { "week": "Week 5–6", "topic": "Power BI Fundamentals" },
+      { "week": "Week 7–8", "topic": "Dashboard Design & Visualization" },
+      { "week": "Week 9–10", "topic": "Real-world Projects & Portfolio" }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "python-programming",
+    "title": "Python Programming",
+    "icon": "🐍",
+    "badge_color": "#1a5c45",
+    "card_color": "#e8fff0",
+    "original_price": 120000,
+    "price": 25000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "10 Weeks",
+    "level": "Beginner to Intermediate",
+    "students": 1890,
+    "rating": 4.9,
+    "reviews": 512,
+    "description": "Python is the world's most versatile programming language. From automation to AI, master Python from the ground up and build real projects that solve real problems.",
+    "what_you_learn": [
+      "Python syntax, data types, and control flow",
+      "Object-oriented programming (OOP)",
+      "File handling, modules, and packages",
+      "Web scraping with BeautifulSoup",
+      "Automation scripts and task scheduling",
+      "Introduction to APIs and Flask web framework"
+    ],
+    "requirements": [
+      "Zero programming experience needed",
+      "A computer with internet connection",
+      "Python installed (free download)"
+    ],
+    "instructor": {
+      "name": "Tunde Fashola",
+      "title": "Software Engineer at Interswitch",
+      "avatar": "TF",
+      "bio": "9 years of Python development. Built production systems used by millions of Nigerians."
+    },
+    "curriculum": [
+      { "week": "Week 1–2", "topic": "Python Basics & Syntax" },
+      { "week": "Week 3–4", "topic": "Functions, Lists & Dictionaries" },
+      { "week": "Week 5–6", "topic": "OOP & Modules" },
+      { "week": "Week 7–8", "topic": "File Handling & Error Management" },
+      { "week": "Week 9–10", "topic": "Projects: Automation & Web Apps" }
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "react-js",
+    "title": "React JS",
+    "icon": "⚛️",
+    "badge_color": "#1a5c45",
+    "card_color": "#e8f4ff",
+    "original_price": 165000,
+    "price": 35000,
+    "currency": "₦",
+    "tags": ["Fully Remote", "Discounted"],
+    "features": ["Virtual Session", "Professional Tutors", "Global Relevance", "Certification Training"],
+    "duration": "12 Weeks",
+    "level": "Intermediate",
+    "students": 1340,
+    "rating": 4.8,
+    "reviews": 289,
+    "description": "React is the most in-demand frontend library in the world. Build powerful, interactive user interfaces and single-page applications that employers are looking for.",
+    "what_you_learn": [
+      "React components, props, and state management",
+      "Hooks: useState, useEffect, useContext, and custom hooks",
+      "React Router for multi-page applications",
+      "Redux Toolkit for global state management",
+      "Fetching data from REST APIs",
+      "Testing React apps with Jest and React Testing Library"
+    ],
+    "requirements": [
+      "JavaScript fundamentals (ES6+)",
+      "Basic HTML and CSS knowledge",
+      "Node.js installed on your computer"
+    ],
+    "instructor": {
+      "name": "Kemi Adeola",
+      "title": "Frontend Lead at Paystack",
+      "avatar": "KA",
+      "bio": "7 years specializing in React ecosystems. Speaker at multiple West African tech conferences."
+    },
+    "curriculum": [
+      { "week": "Week 1–2", "topic": "React Fundamentals & JSX" },
+      { "week": "Week 3–4", "topic": "State, Props & Events" },
+      { "week": "Week 5–6", "topic": "React Hooks Deep Dive" },
+      { "week": "Week 7–8", "topic": "Routing & Navigation" },
+      { "week": "Week 9–10", "topic": "State Management with Redux" },
+      { "week": "Week 11–12", "topic": "Testing, Optimization & Capstone" }
+    ]
+  }
+]
