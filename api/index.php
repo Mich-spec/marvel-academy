@@ -1,75 +1,226 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+/**
+ * ─────────────────────────────────────────────
+ * SUPABASE CONFIG
+ * ─────────────────────────────────────────────
+ */
+$supabaseUrl = getenv('SUPABASE_URL');
+$supabaseKey = getenv('SUPABASE_KEY');
+$bucketName  = getenv('SUPABASE_BUCKET');
+$filePath    = getenv('SUPABASE_FILE'); // e.g. preregistrations.json
 
-// ── Handle form submission ──────────────────────────────────────────
+
+/**
+ * Read JSON file from Supabase Storage
+ */
+function readJsonFromSupabase($url, $key, $bucket, $file)
+{
+    $endpoint = rtrim($url, '/') . "/storage/v1/object/public/$bucket/$file";
+
+    $opts = [
+        "http" => [
+            "method" => "GET",
+            "header" =>
+                "apikey: $key\r\n" .
+                "Authorization: Bearer $key\r\n"
+        ]
+    ];
+
+    $context = stream_context_create($opts);
+
+    $data = @file_get_contents($endpoint, false, $context);
+
+    return $data ? json_decode($data, true) : [];
+}
+
+
+/**
+ * Write JSON file to Supabase Storage
+ */
+function writeJsonToSupabase($url, $key, $bucket, $file, $data)
+{
+    $endpoint = rtrim($url, '/') . "/storage/v1/object/$bucket/$file";
+
+    $opts = [
+        "http" => [
+            "method" => "PUT",
+            "header" =>
+                "apikey: $key\r\n" .
+                "Authorization: Bearer $key\r\n" .
+                "Content-Type: application/json\r\n" .
+                "x-upsert: true\r\n",
+            "content" => json_encode($data, JSON_PRETTY_PRINT)
+        ]
+    ];
+
+    $context = stream_context_create($opts);
+
+    $result = @file_get_contents($endpoint, false, $context);
+
+    return $result !== false;
+}
+
+
+/**
+ * ─────────────────────────────────────────────
+ * HANDLE FORM SUBMISSION
+ * ─────────────────────────────────────────────
+ */
 $response = ['status' => '', 'message' => ''];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'preregister') {
+if (
+    $_SERVER['REQUEST_METHOD'] === 'POST' &&
+    isset($_POST['action']) &&
+    $_POST['action'] === 'preregister'
+) {
 
-    $email     = trim(filter_input(INPUT_POST, 'email',     FILTER_SANITIZE_EMAIL));
-    $name      = trim(filter_input(INPUT_POST, 'name',      FILTER_SANITIZE_SPECIAL_CHARS));
-    $interest  = trim(filter_input(INPUT_POST, 'interest',  FILTER_SANITIZE_SPECIAL_CHARS));
-    $phone     = trim(filter_input(INPUT_POST, 'phone',     FILTER_SANITIZE_SPECIAL_CHARS));
+    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
+    $interest = trim(filter_input(INPUT_POST, 'interest', FILTER_SANITIZE_SPECIAL_CHARS));
+    $phone = trim(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS));
 
+    // Validation
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $response = ['status' => 'error', 'message' => 'Please enter a valid email address.'];
-    } elseif (empty($name)) {
-        $response = ['status' => 'error', 'message' => 'Please enter your full name.'];
-    } else {
-        $file = __DIR__ . '/data/preregistrations.json';
-        $records = [];
 
-        if (file_exists($file)) {
-            $records = json_decode(file_get_contents($file), true) ?? [];
+        $response = [
+            'status' => 'error',
+            'message' => 'Please enter a valid email address.'
+        ];
+
+    } elseif (empty($name)) {
+
+        $response = [
+            'status' => 'error',
+            'message' => 'Please enter your full name.'
+        ];
+
+    } else {
+
+        /**
+         * GET EXISTING RECORDS FROM SUPABASE
+         */
+        $records = readJsonFromSupabase(
+            $supabaseUrl,
+            $supabaseKey,
+            $bucketName,
+            $filePath
+        );
+
+        if (!is_array($records)) {
+            $records = [];
         }
 
-        // Check for duplicate email
+        /**
+         * CHECK DUPLICATE EMAIL
+         */
         $duplicate = false;
+
         foreach ($records as $r) {
-            if (strtolower($r['email']) === strtolower($email)) {
+
+            if (
+                isset($r['email']) &&
+                strtolower($r['email']) === strtolower($email)
+            ) {
                 $duplicate = true;
                 break;
             }
         }
 
         if ($duplicate) {
-            $response = ['status' => 'info', 'message' => "You're already on the list! We'll notify you at <strong>" . htmlspecialchars($email) . "</strong>."];
-        } else {
-            $records[] = [
-                'id'        => count($records) + 1,
-                'name'      => $name,
-                'email'     => $email,
-                'phone'     => $phone,
-                'interest'  => $interest,
-                'ip'        => $_SERVER['REMOTE_ADDR'] ?? '',
-                'timestamp' => date('Y-m-d H:i:s'),
+
+            $response = [
+                'status' => 'info',
+                'message' =>
+                    "You're already on the list! We'll notify you at <strong>" .
+                    htmlspecialchars($email) .
+                    "</strong>."
             ];
 
-            file_put_contents($file, json_encode($records, JSON_PRETTY_PRINT), LOCK_EX);
-            $response = ['status' => 'success', 'message' => "🎉 You're on the list, <strong>" . htmlspecialchars($name) . "</strong>! We'll email you at <strong>" . htmlspecialchars($email) . "</strong> when we launch."];
+        } else {
+
+            /**
+             * ADD NEW RECORD
+             */
+            $records[] = [
+                'id' => count($records) + 1,
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'interest' => $interest,
+                'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
+                'timestamp' => date('Y-m-d H:i:s')
+            ];
+
+            /**
+             * SAVE BACK TO SUPABASE
+             */
+            $saved = writeJsonToSupabase(
+                $supabaseUrl,
+                $supabaseKey,
+                $bucketName,
+                $filePath,
+                $records
+            );
+
+            if ($saved) {
+
+                $response = [
+                    'status' => 'success',
+                    'message' =>
+                        "🎉 You're on the list, <strong>" .
+                        htmlspecialchars($name) .
+                        "</strong>! We'll email you at <strong>" .
+                        htmlspecialchars($email) .
+                        "</strong> when we launch."
+                ];
+
+            } else {
+
+                $response = [
+                    'status' => 'error',
+                    'message' => 'Failed to save your registration. Please try again.'
+                ];
+            }
         }
     }
 
-    // Return JSON for AJAX requests
-    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+    /**
+     * AJAX RESPONSE
+     */
+    if (
+        !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'
+    ) {
+
         header('Content-Type: application/json');
+
         echo json_encode($response);
+
         exit;
     }
 }
 
-// ── Stats ─────────────────────────────────────────────────────────
-$prereg_file  = __DIR__ . '/data/preregistrations.json';
-$prereg_count = 0;
-if (file_exists($prereg_file)) {
-    $data = json_decode(file_get_contents($prereg_file), true);
-    $prereg_count = is_array($data) ? count($data) : 0;
-}
+
+/**
+ * ─────────────────────────────────────────────
+ * STATS
+ * ─────────────────────────────────────────────
+ */
+$preregData = readJsonFromSupabase(
+    $supabaseUrl,
+    $supabaseKey,
+    $bucketName,
+    $filePath
+);
+
+$prereg_count = is_array($preregData)
+    ? count($preregData)
+    : 0;
 
 $courses = get_courses();
 
-// Launch date: 60 days from now (update to real date)
 $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
 ?>
 <!DOCTYPE html>
