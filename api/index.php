@@ -8,16 +8,50 @@ require_once __DIR__ . '/config.php';
  */
 $supabaseUrl = getenv('SUPABASE_URL');
 $supabaseKey = getenv('SUPABASE_KEY');
-$bucketName  = getenv('SUPABASE_BUCKET');
-$filePath    = getenv('SUPABASE_FILE'); // e.g. preregistrations.json
+
+$table = 'preregistrations';
 
 
 /**
- * Read JSON file from Supabase Storage
+ * ─────────────────────────────────────────────
+ * INSERT REGISTRATION
+ * ─────────────────────────────────────────────
  */
-function readJsonFromSupabase($url, $key, $bucket, $file)
+function insertPreregistration($url, $key, $table, $data)
 {
-    $endpoint = rtrim($url, '/') . "/storage/v1/object/public/$bucket/$file";
+    $endpoint = rtrim($url, '/') . "/rest/v1/$table";
+
+    $opts = [
+        "http" => [
+            "method" => "POST",
+            "header" =>
+                "apikey: $key\r\n" .
+                "Authorization: Bearer $key\r\n" .
+                "Content-Type: application/json\r\n" .
+                "Prefer: return=representation\r\n",
+            "content" => json_encode($data)
+        ]
+    ];
+
+    $context = stream_context_create($opts);
+
+    $result = @file_get_contents($endpoint, false, $context);
+
+    return $result ? json_decode($result, true) : false;
+}
+
+
+/**
+ * ─────────────────────────────────────────────
+ * CHECK EXISTING EMAIL
+ * ─────────────────────────────────────────────
+ */
+function emailExists($url, $key, $table, $email)
+{
+    $endpoint = rtrim($url, '/') .
+        "/rest/v1/$table?email=eq." .
+        urlencode($email) .
+        "&select=id";
 
     $opts = [
         "http" => [
@@ -30,28 +64,30 @@ function readJsonFromSupabase($url, $key, $bucket, $file)
 
     $context = stream_context_create($opts);
 
-    $data = @file_get_contents($endpoint, false, $context);
+    $result = @file_get_contents($endpoint, false, $context);
 
-    return $data ? json_decode($data, true) : [];
+    $data = $result ? json_decode($result, true) : [];
+
+    return !empty($data);
 }
 
 
 /**
- * Write JSON file to Supabase Storage
+ * ─────────────────────────────────────────────
+ * GET REGISTRATION COUNT
+ * ─────────────────────────────────────────────
  */
-function writeJsonToSupabase($url, $key, $bucket, $file, $data)
+function getPreregistrationCount($url, $key, $table)
 {
-    $endpoint = rtrim($url, '/') . "/storage/v1/object/$bucket/$file";
+    $endpoint = rtrim($url, '/') .
+        "/rest/v1/$table?select=id";
 
     $opts = [
         "http" => [
-            "method" => "PUT",
+            "method" => "GET",
             "header" =>
                 "apikey: $key\r\n" .
-                "Authorization: Bearer $key\r\n" .
-                "Content-Type: application/json\r\n" .
-                "x-upsert: true\r\n",
-            "content" => json_encode($data, JSON_PRETTY_PRINT)
+                "Authorization: Bearer $key\r\n"
         ]
     ];
 
@@ -59,7 +95,9 @@ function writeJsonToSupabase($url, $key, $bucket, $file, $data)
 
     $result = @file_get_contents($endpoint, false, $context);
 
-    return $result !== false;
+    $data = $result ? json_decode($result, true) : [];
+
+    return is_array($data) ? count($data) : 0;
 }
 
 
@@ -77,11 +115,28 @@ if (
 ) {
 
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
-    $interest = trim(filter_input(INPUT_POST, 'interest', FILTER_SANITIZE_SPECIAL_CHARS));
-    $phone = trim(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS));
 
-    // Validation
+    $name = trim(filter_input(
+        INPUT_POST,
+        'name',
+        FILTER_SANITIZE_SPECIAL_CHARS
+    ));
+
+    $interest = trim(filter_input(
+        INPUT_POST,
+        'interest',
+        FILTER_SANITIZE_SPECIAL_CHARS
+    ));
+
+    $phone = trim(filter_input(
+        INPUT_POST,
+        'phone',
+        FILTER_SANITIZE_SPECIAL_CHARS
+    ));
+
+    /**
+     * VALIDATION
+     */
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         $response = [
@@ -99,36 +154,9 @@ if (
     } else {
 
         /**
-         * GET EXISTING RECORDS FROM SUPABASE
-         */
-        $records = readJsonFromSupabase(
-            $supabaseUrl,
-            $supabaseKey,
-            $bucketName,
-            $filePath
-        );
-
-        if (!is_array($records)) {
-            $records = [];
-        }
-
-        /**
          * CHECK DUPLICATE EMAIL
          */
-        $duplicate = false;
-
-        foreach ($records as $r) {
-
-            if (
-                isset($r['email']) &&
-                strtolower($r['email']) === strtolower($email)
-            ) {
-                $duplicate = true;
-                break;
-            }
-        }
-
-        if ($duplicate) {
+        if (emailExists($supabaseUrl, $supabaseKey, $table, $email)) {
 
             $response = [
                 'status' => 'info',
@@ -141,30 +169,24 @@ if (
         } else {
 
             /**
-             * ADD NEW RECORD
+             * INSERT DATA
              */
-            $records[] = [
-                'id' => count($records) + 1,
-                'name' => $name,
-                'email' => $email,
-                'phone' => $phone,
-                'interest' => $interest,
-                'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
-                'timestamp' => date('Y-m-d H:i:s')
+            $newUser = [
+                'name'      => $name,
+                'email'     => $email,
+                'phone'     => $phone,
+                'interest'  => $interest,
+                'ip'        => $_SERVER['REMOTE_ADDR'] ?? ''
             ];
 
-            /**
-             * SAVE BACK TO SUPABASE
-             */
-            $saved = writeJsonToSupabase(
+            $inserted = insertPreregistration(
                 $supabaseUrl,
                 $supabaseKey,
-                $bucketName,
-                $filePath,
-                $records
+                $table,
+                $newUser
             );
 
-            if ($saved) {
+            if ($inserted) {
 
                 $response = [
                     'status' => 'success',
@@ -180,7 +202,8 @@ if (
 
                 $response = [
                     'status' => 'error',
-                    'message' => 'Failed to save your registration. Please try again.'
+                    'message' =>
+                        'Unable to save your registration. Please try again.'
                 ];
             }
         }
@@ -208,16 +231,11 @@ if (
  * STATS
  * ─────────────────────────────────────────────
  */
-$preregData = readJsonFromSupabase(
+$prereg_count = getPreregistrationCount(
     $supabaseUrl,
     $supabaseKey,
-    $bucketName,
-    $filePath
+    $table
 );
-
-$prereg_count = is_array($preregData)
-    ? count($preregData)
-    : 0;
 
 $courses = get_courses();
 
