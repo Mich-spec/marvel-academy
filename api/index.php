@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/filename.php';
+require_once __DIR__ . '/config.php';
 
 
 // ── Handle form submission ──────────────────────────────────────────
