@@ -357,12 +357,12 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
         <div style="margin-top:24px;display:flex;gap:10px;flex-direction:column;">
           <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:4px;">Share with friends and earn referral bonuses</p>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-            <a href="https://twitter.com/intent/tweet?text=I just pre-registered for Marvel Academy — Africa's next big tech training platform! Join me 👇&url=<?= urlencode('https://marvelacademy.ng/pre-register.php') ?>"
+            <a href="https://twitter.com/intent/tweet?text=I just pre-registered for Marvel Academy — Africa's next big tech training platform! Join me 👇&url=<?= urlencode('https://marvel-academy-pi.vercel.app/') ?>"
                target="_blank"
                style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
               𝕏 Share on X
             </a>
-            <a href="https://wa.me/?text=I just pre-registered for Marvel Academy — Africa's next big tech training platform! Join here: <?= urlencode('https://marvelacademy.ng/pre-register.php') ?>"
+            <a href="https://wa.me/?text=I just pre-registered for Marvel Academy — Africa's next big tech training platform! Join here: <?= urlencode('https://marvel-academy-pi.vercel.app/') ?>"
                target="_blank"
                style="display:flex;align-items:center;gap:7px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);color:#25D366;text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
               WhatsApp
