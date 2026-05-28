@@ -1069,6 +1069,8 @@ select.pr-input option {
 }
 
 @media (max-width: 640px) {
+   .pr-eyebrow{align-self: center;}
+  .pr-left h1{text-align: center;}
   .benefits-grid {
     grid-template-columns: 1fr;
   }
