@@ -270,10 +270,6 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
     <a href="index.php" class="pr-nav-logo">
       <div class="pr-nav-logo-icon">MA</div>
       <span class="pr-nav-logo-text">Marvel Academy</span>
-    </a>
-    <a href="index.php" class="pr-nav-back">
-      ← Back to main site
-    </a>
   </div>
 </nav>
 
@@ -313,7 +309,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
       <div class="pr-perk">
         <div class="pr-perk-icon">💰</div>
         <div class="pr-perk-text">
-          <strong>Early-Bird Pricing (Up to 30% Off)</strong>
+          <strong>Early-Bird Pricing (Up to 70% Off)</strong>
           <span>Locked-in rate, only for pre-registered members. Never expires.</span>
         </div>
       </div>
@@ -491,10 +487,10 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
     <div class="benefits-grid">
       <?php
       $benefits = [
-        ['icon'=>'💸', 'title'=>'Up to 30% Off All Courses', 'desc'=>'Your early-bird price is locked in forever. You pay less than anyone who joins after launch — no matter when you start.', 'badge'=>'Save ₦51k+'],
+        ['icon'=>'💸', 'title'=>'Up to 70% Off All Courses', 'desc'=>'Your early-bird price is locked in forever. You pay less than anyone who joins after launch — no matter when you start.', 'badge'=>'Save ₦51k+'],
         ['icon'=>'🎟️', 'title'=>'Skip the Launch Queue', 'desc'=>'Course seats are limited. Pre-registrants get first pick before enrolment opens to the general public.', 'badge'=>'Priority Access'],
         ['icon'=>'📚', 'title'=>'Free Starter Resource Pack', 'desc'=>'Receive a curated bundle of career roadmaps, study guides and industry reading lists — delivered before classes begin.', 'badge'=>'Free Bonus'],
-        ['icon'=>'👨‍🏫', 'title'=>'One Free Mentor Session', 'desc'=>'Get a 30-minute 1-on-1 career consultation with one of our expert tutors before the programme starts.', 'badge'=>'₦15,000 Value'],
+        ['icon'=>'👨‍🏫', 'title'=>'One Free Mentor Session', 'desc'=>'Get a 10-minute 1-on-1 career consultation with one of our expert tutors before the programme starts.', 'badge'=>'₦15,000 Value'],
         ['icon'=>'🏅', 'title'=>'Founding Member Badge', 'desc'=>'Wear your founding membership on your certificate and LinkedIn profile — a permanent mark of being an early believer.', 'badge'=>'Exclusive'],
         ['icon'=>'🔔', 'title'=>'Instant Launch Notification', 'desc'=>'The moment we go live, you\'ll be the first to know — via email and WhatsApp before any public announcement.', 'badge'=>'First to Know'],
       ];
