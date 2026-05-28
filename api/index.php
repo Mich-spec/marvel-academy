@@ -270,6 +270,25 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
     <a href="index.php" class="pr-nav-logo">
       <div class="pr-nav-logo-icon">MA</div>
       <span class="pr-nav-logo-text">Marvel Academy</span>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <span style="color:white;">Follow:</sapn> <a href="https://twitter.com/Marvelunbox"
+               target="_blank"
+               style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
+              𝕏 
+            </a>
+            <a href="https://chat.whatsapp.com/BqzOBa3R8UMJQD8Ik1Z5xS"
+               target="_blank"
+               style="display:flex;align-items:center;gap:7px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);color:#25D366;text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
+               <svg xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 32 32"
+                    fill="currentColor">
+
+                  <path d="M16.001 3C8.821 3 3 8.821 3 16c0 2.54.746 5.02 2.156 7.143L3 29l5.99-2.118A12.944 12.944 0 0 0 16.001 29C23.179 29 29 23.179 29 16S23.179 3 16.001 3zm0 23.667a10.57 10.57 0 0 1-5.38-1.472l-.385-.228-3.555 1.257 1.19-3.462-.25-.402A10.594 10.594 0 1 1 16 26.667zm5.81-7.93c-.318-.159-1.88-.928-2.172-1.034-.292-.106-.504-.159-.716.16-.212.318-.822 1.033-1.007 1.245-.186.212-.372.239-.69.08-.318-.16-1.344-.495-2.56-1.578-.946-.843-1.585-1.883-1.77-2.2-.186-.319-.02-.49.139-.648.143-.142.318-.372.477-.557.16-.186.213-.319.319-.531.106-.212.053-.398-.027-.557-.08-.159-.716-1.723-.98-2.36-.258-.62-.52-.535-.716-.545l-.61-.01c-.212 0-.557.08-.849.398-.292.319-1.114 1.087-1.114 2.651s1.14 3.074 1.299 3.286c.159.212 2.244 3.426 5.437 4.804.76.328 1.353.524 1.815.671.763.243 1.458.209 2.007.127.612-.091 1.88-.769 2.145-1.511.266-.743.266-1.379.186-1.511-.08-.133-.292-.212-.61-.372z"/>
+                </svg> 
+            </a>
+    </div>
   </div>
 </nav>
 
@@ -609,6 +628,26 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
     <a href="#">Privacy Policy</a>
     <a href="#">Terms of Service</a>
   </div> -->
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <span style="color:white;">Follow:</sapn> 
+                <a href="https://twitter.com/Marvelunbox"
+               target="_blank"
+               style="display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
+              𝕏 Follow on X
+            </a>
+            <a href="https://chat.whatsapp.com/BqzOBa3R8UMJQD8Ik1Z5xS"
+               target="_blank"
+               style="display:flex;align-items:center;gap:7px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);color:#25D366;text-decoration:none;font-size:13px;padding:9px 16px;border-radius:9px;transition:all 0.3s;">
+               <svg xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 32 32"
+                    fill="currentColor">
+
+                  <path d="M16.001 3C8.821 3 3 8.821 3 16c0 2.54.746 5.02 2.156 7.143L3 29l5.99-2.118A12.944 12.944 0 0 0 16.001 29C23.179 29 29 23.179 29 16S23.179 3 16.001 3zm0 23.667a10.57 10.57 0 0 1-5.38-1.472l-.385-.228-3.555 1.257 1.19-3.462-.25-.402A10.594 10.594 0 1 1 16 26.667zm5.81-7.93c-.318-.159-1.88-.928-2.172-1.034-.292-.106-.504-.159-.716.16-.212.318-.822 1.033-1.007 1.245-.186.212-.372.239-.69.08-.318-.16-1.344-.495-2.56-1.578-.946-.843-1.585-1.883-1.77-2.2-.186-.319-.02-.49.139-.648.143-.142.318-.372.477-.557.16-.186.213-.319.319-.531.106-.212.053-.398-.027-.557-.08-.159-.716-1.723-.98-2.36-.258-.62-.52-.535-.716-.545l-.61-.01c-.212 0-.557.08-.849.398-.292.319-1.114 1.087-1.114 2.651s1.14 3.074 1.299 3.286c.159.212 2.244 3.426 5.437 4.804.76.328 1.353.524 1.815.671.763.243 1.458.209 2.007.127.612-.091 1.88-.769 2.145-1.511.266-.743.266-1.379.186-1.511-.08-.133-.292-.212-.61-.372z"/>
+                </svg> Join Whatsapp Community
+            </a>
+    </div>
   <p>© <?= date('Y') ?> Marvel Academy. All rights reserved. &nbsp;·&nbsp; Built for African talent, recognised globally.</p>
 </footer>
 
