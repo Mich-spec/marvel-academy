@@ -628,7 +628,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
     <a href="#">Privacy Policy</a>
     <a href="#">Terms of Service</a>
   </div> -->
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;gap:20px;">
             <span style="color:white;">Follow:</sapn> 
                 <a href="https://twitter.com/Marvelunbox"
                target="_blank"
