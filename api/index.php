@@ -321,7 +321,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
       <div class="pr-perk">
         <div class="pr-perk-icon">🎟️</div>
         <div class="pr-perk-text">
-          <strong>Priority Enrolment Access</strong>
+          <strong>Priority Enrollment Access</strong>
           <span>Be first in line — skip the waitlist when we officially open.</span>
         </div>
       </div>
@@ -507,7 +507,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
       <?php
       $benefits = [
         ['icon'=>'💸', 'title'=>'Up to 70% Off All Courses', 'desc'=>'Your early-bird price is locked in forever. You pay less than anyone who joins after launch — no matter when you start.', 'badge'=>'Save ₦51k+'],
-        ['icon'=>'🎟️', 'title'=>'Skip the Launch Queue', 'desc'=>'Course seats are limited. Pre-registrants get first pick before enrolment opens to the general public.', 'badge'=>'Priority Access'],
+        ['icon'=>'🎟️', 'title'=>'Skip the Launch Queue', 'desc'=>'Course seats are limited. Pre-registrants get first pick before enrollment opens to the general public.', 'badge'=>'Priority Access'],
         ['icon'=>'📚', 'title'=>'Free Starter Resource Pack', 'desc'=>'Receive a curated bundle of career roadmaps, study guides and industry reading lists — delivered before classes begin.', 'badge'=>'Free Bonus'],
         ['icon'=>'👨‍🏫', 'title'=>'One Free Mentor Session', 'desc'=>'Get a 10-minute 1-on-1 career consultation with one of our expert tutors before the programme starts.', 'badge'=>'₦15,000 Value'],
         ['icon'=>'🏅', 'title'=>'Founding Member Badge', 'desc'=>'Wear your founding membership on your certificate and LinkedIn profile — a permanent mark of being an early believer.', 'badge'=>'Exclusive'],
@@ -569,7 +569,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
   <div class="howitworks-inner">
     <div class="hiw-header">
       <div class="section-tag" style="background:rgba(26,122,74,0.18);color:#5AE395;display:table;margin:0 auto 16px;">🗺️ How It Works</div>
-      <h2>Your Journey From Here to Hired</h2>
+      <h2>Your Journey From Here to being Hired</h2>
       <p>Four simple steps to transform your career with Marvel Academy.</p>
     </div>
     <div class="hiw-steps">
@@ -599,7 +599,7 @@ $launch_date = date('Y-m-d', strtotime('+60 days')) . 'T09:00:00';
 <div class="urgency-banner" id="urgencyBanner">
   <div class="urgency-text">
     <h3>⚡ Early-Bird Spots Are Limited</h3>
-    <p>We're capping early-bird enrolments to ensure quality support for every student. Once slots are filled, prices return to standard rates.</p>
+    <p>We're capping early-bird enrollments to ensure quality support for every student. Once slots are filled, prices return to standard rates.</p>
   </div>
   <div class="urgency-spots">
     <div class="urgency-bar-wrap">
